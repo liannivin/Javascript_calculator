@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple Calculator</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+    <script language="javascript">
+      const $form = document.getElementById("sumar");
+
+      function handleEvent(event) {
+        event.preventDefault();
+        console.log(event);
+        const $first = event.target.elements.first;
+        const $second = event.target.elements.second;
+        const $output = event.target.mostrar;
+        const $operator = event.target.elements.operator;
+
+        if ($operator.value === "+") {
+          $output.innerHTML = `${parseInt($first.value) +
+            parseInt($second.value)}`;
+        }
+
+        if ($operator.value === "-") {
+          $output.innerHTML = `${parseInt($first.value) -
+            parseInt($second.value)}`;
+        }
+
+        if ($operator.value === "*") {
+          $output.innerHTML = `${parseInt($first.value) *
+            parseInt($second.value)}`;
+        }
+
+        if ($operator.value === "/" && parseInt($second.value) != 0) {
+          $output.innerHTML = `${parseInt($first.value) /
+            parseInt($second.value)}`;
+        }
+      }
+      $form.addEventListener("submit", handleEvent);
+    </script>
+  </head>
+  <body>
+    <form id="sumar">
+      <input
+        type="text"
+        placeholder="Add first number"
+        name="first"
+        id="first"
+        style="display:block;margin-bottom: 10px"
+      />
+      <input
+        type="text"
+        placeholder="Add second number"
+        name="second"
+        id="second"
+        style="display:block;margin-bottom:10px"
+      />
+      <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <button onclick="" calc();>Calculate</button>
+      <!-- or.. -->
+      <!--   <button name="submit" id="submit">Calculate</button> -->
+      <output
+        name="mostrar"
+        id="mostrar"
+        style="display:block;margin-bottom:10px"
+      >
+      </output>
+    </form>
+  </body>
+</html>
